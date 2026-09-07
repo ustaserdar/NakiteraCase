@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: nakitera-brokerage
+  datasource:
+    url: jdbc:h2:mem:nakitera;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      write-bigdecimal-as-plain: true
+
+server:
+  port: 8080
+
+nakitera:
+  security:
+    admin:
+      username: admin
+      password: admin123
+    customers:
+      - username: customer-1
+        password: customer123
+      - username: customer-2
+        password: customer123
+
+springdoc:
+  swagger-ui:
+    persist-authorization: true
+    try-it-out-enabled: true
+    display-request-duration: true
+    operations-sorter: method
+    tags-sorter: alpha
+  show-actuator: false
